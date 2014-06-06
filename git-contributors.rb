@@ -30,29 +30,28 @@ shortlog = Dir.chdir(target) { shortlog = %x{git shortlog -ns} }
 
 shortlog.each_line { |line|
 
-    _match, commits, contributor = *line.match(/(\d{1,})\W([a-zA-Z\s]+)/)
+  _match, commits, contributor = *line.match(/(\d{1,})\W([a-zA-Z\s]+)/)
 
-    contributor.chop!
+  contributor.chop!
 
-    committers << { name: contributor, commits: commits.to_i, percent: 0 }
+  committers << { name: contributor, commits: commits.to_i, percent: 0 }
 }
 
 
 total_commits = committers.inject(0) { |memo, contributor|
-    memo += contributor[:commits]
+  memo += contributor[:commits]
 }
 
 
 committers.each { |contributor|
+  name    = contributor[:name]
+  commits = contributor[:commits]
 
-    name    = contributor[:name]
-    commits = contributor[:commits]
+  percent = (commits.to_f / total_commits.to_f * 100.00).round(1)
 
-    percent = (commits.to_f / total_commits.to_f * 100.00).round(1)
+  tab1 = 5
+  tab2 = 25 + (percent.to_s.length - name.to_s.length)
+  tab2 = tab2 - 1 if percent.to_s.length > 3
 
-    tab1 = 5
-    tab2 = 25 + (percent.to_s.length - name.to_s.length)
-    tab2 = tab2 - 1 if percent.to_s.length > 3
-
-    puts "#{align(commits,tab1)} #{name} #{align(percent,tab2)} %"
+  puts "#{align(commits,tab1)} #{name} #{align(percent,tab2)} %"
 }
