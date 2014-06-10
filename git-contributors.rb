@@ -47,7 +47,8 @@ committers.each { |contributor|
   name    = contributor[:name]
   commits = contributor[:commits]
 
-  percent = (commits.to_f / total_commits.to_f * 100.00).round(1)
+  # give at least 0.1 percent contribution
+  percent = [0.1, (commits.to_f / total_commits.to_f * 100.00).round(1)].max;
 
   tab1 = 5
   tab2 = 25 + (percent.to_s.length - name.to_s.length)
