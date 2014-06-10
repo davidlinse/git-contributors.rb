@@ -1,8 +1,8 @@
 #!/usr/env ruby
 
 # author:   david linse <davidlinse@gmail.com>
-# uri:      https://github.com/davidlinse/git-contributors.rb.git
-# version:  0.1.0
+# uri:      https://github.com/davidlinse/git-contributors.rb
+# version:  0.1.1
 # date:     2013/04/30
 # licence:  MIT
 # ruby:     1.9.3

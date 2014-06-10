@@ -1,4 +1,4 @@
-### git-contributors.rb (0.1.0)
+### git-contributors.rb (0.1.1)
 
 contributor stats for your git repository.
 
@@ -26,14 +26,9 @@ $ ruby -v #=> ruby 1.9.3p125
 $ git --version #=> 1.7+
 ```
 
-#### Developer notes
-
-* claim to follow versioning guide-lines proposed by [semver.org][semver]
-* keep as simple as possible
-
-
 #### History
 
+* 0.1.1 give at least 0.1% contribution
 * 0.1.0 initial commit
 
 
